@@ -66,11 +66,12 @@ class Spatiotemporal_Bayes_Quantile_regression:
         self.results = {"theta_samples": torch.stack(theta_samples), "phi_samples": torch.stack(phi_samples), "W_samples": torch.stack(W_samples)}
         
         NLL = NLL_AL(self.Y, (self.F * self.results["theta_samples"][:,1:,:]).sum(-1), self.results["phi_samples"], Q = self.Q)
+        plt.figure()
         plt.plot(NLL.cpu().numpy())
         plt.title("Trace plot")
         plt.ylabel("Negative Log-Likelihood")
         plt.xlabel("Iteration")
-        plt.show()
+        plt.show(block=False)
         
     
     def fit_Y(self):
