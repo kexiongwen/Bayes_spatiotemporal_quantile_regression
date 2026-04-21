@@ -18,7 +18,7 @@ class Spatiotemporal_Bayes_Quantile_regression:
         self.Y = torch.from_numpy(Y).to(self.dtype).to(self.device)
         self.F = torch.from_numpy(F).to(self.dtype).to(self.device)
         self.G = torch.from_numpy(G).to(self.dtype).to(self.device)
-        self.Q = Q
+        self.Q = 1-Q
         
         self.M = M # number of MCMC iterations
         self.burn_in = burn_in # number of burn-in iterations
